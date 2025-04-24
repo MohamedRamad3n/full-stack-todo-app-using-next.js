@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/table";
 import { truncateText } from "@/utils";
 import TableAcions from "./TableAcions";
+import { ITodo } from "../../types";
 
-export function TodoTableClient({ todos }: { todos: any[] }) {
+export function TodoTableClient({ todos }: { todos: ITodo[] }) {
     return (
         <div className="rounded-md border">
             <Table>
@@ -38,7 +39,7 @@ export function TodoTableClient({ todos }: { todos: any[] }) {
                                 </span>
                             </TableCell>
                             <TableCell className="text-right">
-                                <TableAcions id={todo.id} />
+                                <TableAcions todo={todo} />
                             </TableCell>
                         </TableRow>
                     ))}

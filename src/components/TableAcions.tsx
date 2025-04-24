@@ -5,23 +5,19 @@ import { Button } from './ui/button';
 import { Pencil } from 'lucide-react';
 import { Spinner } from '@/utils/Spinder';
 import { deleteTodosAction } from '../../server/actions/todo-action';
-
-export default function TableAcions({ id }: { id: string }) {
+import EditTodoForm from './EditTodoForm';
+import { ITodo } from '../../types';
+export default function TableAcions({ todo }: { todo: ITodo }) {
     const [isLoading, setIsLoading] = useState(false);
     return (
         <div className="flex justify-end gap-2">
-            <Button
-                variant="outline"
-                size="icon"
-            >
-                <Pencil className="h-4 w-4" />
-            </Button>
+            <EditTodoForm todo={todo} />
             <Button
                 variant="destructive"
                 size="icon"
                 onClick={() => {
                     setIsLoading(true);
-                    deleteTodosAction({ id })
+                    deleteTodosAction({ id: todo.id })
                         .finally(() => setIsLoading(false));
                 }}
             >
