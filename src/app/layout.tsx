@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/provider/theme-Provider";
 import { Toaster } from "sonner";
 import { ClerkProvider } from "@clerk/nextjs";
+import NavBar from "@/components/NavBar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <NavBar />
             <Toaster />
             {children}
           </ThemeProvider>
