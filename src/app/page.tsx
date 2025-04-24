@@ -1,11 +1,11 @@
-import { TodoTable } from "@/components/TodoTable";
-import { getTodosAction } from "../../server/actions/todo-action";
 import TodoForm from "@/components/TodoForm";
+import { TodoTable } from "@/components/TodoTable";
 import { ModeToggle } from "@/components/ToggleMode";
 
 export default async function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+          <ModeToggle />
       <div className="container mx-auto px-4 py-16 space-y-12">
 
         {/* Header */}
