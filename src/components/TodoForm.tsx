@@ -27,11 +27,18 @@ import { z } from "zod";
 import { createTodosAction } from "../../server/actions/todo-action";
 import { Checkbox } from "@/components/ui/checkbox";
 
-const TodoFormSchema = z.object({
-  title: z.string().min(1, { message: "Title is required" }),
-  description: z.string().optional(),
+export const TodoFormSchema = z.object({
+  title: z
+    .string()
+    .min(1, { message: "Title is required" })
+    .transform((val) => val.split(" ").slice(0, 5).join(" ")),
+  description: z
+    .string()
+    .optional()
+    .transform((val) => (val ? val.split(" ").slice(0, 5).join(" ") : val)),
   completed: z.boolean().optional(),
-})
+});
+
 
 export type TodoFormValues = z.infer<typeof TodoFormSchema>
 
@@ -111,10 +118,12 @@ export default function TodoForm() {
                 name="completed"
                 render={({ field }) => (
                   <FormItem>
-                    <FormControl>
-                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                    </FormControl>
-                    <FormLabel>Completed</FormLabel>
+                    <div className="flex items-center gap-2">
+                      <FormControl>
+                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                      <FormLabel>Completed</FormLabel>
+                    </div>
                     <FormDescription>
                       Mark your todo as completed
                     </FormDescription>
