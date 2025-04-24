@@ -3,7 +3,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
 import { ModeToggle } from './ToggleMode'
 const NavBar = () => {
     return (
-        <header  className='flex justify-between items-center p-4 bg-white dark:bg-gray-900'>
+        <header className='flex justify-between items-center p-4 bg-white dark:bg-gray-900'>
             <SignedIn>
                 <ModeToggle />
                 <UserButton />
