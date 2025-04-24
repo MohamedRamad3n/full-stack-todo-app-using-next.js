@@ -24,6 +24,8 @@ import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { createTodosAction } from "../../server/actions/todo-action";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const TodoFormSchema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
@@ -44,9 +46,10 @@ export default function TodoForm() {
     mode: "onChange",
   })
 
-  const onSubmit = (data: TodoFormValues) => {
+  const onSubmit = async (data: TodoFormValues) => {
     console.log(data);
-
+    await createTodosAction({ data });
+    form.reset();
   }
 
   return (
@@ -98,6 +101,22 @@ export default function TodoForm() {
                     </FormControl>
                     <FormDescription>
                       Add details about your todo
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="completed"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                    <FormLabel>Completed</FormLabel>
+                    <FormDescription>
+                      Mark your todo as completed
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
