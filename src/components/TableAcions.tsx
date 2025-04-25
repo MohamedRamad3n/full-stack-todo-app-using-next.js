@@ -21,7 +21,9 @@ export default function TableAcions({ todo }: { todo: ITodo }) {
                 }}
             >
                 {isLoading ? (
-                    <Spinner isLoading={isLoading} children={<Trash className="h-4 w-4" />} />
+                    <Spinner isLoading={isLoading}>
+                        <Trash className="h-4 w-4" />
+                    </Spinner>
                 ) : (
                     <Trash className="h-4 w-4" />
                 )}

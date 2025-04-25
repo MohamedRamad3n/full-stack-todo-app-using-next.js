@@ -76,7 +76,7 @@ export default function EditTodoForm({ todo }: { todo: ITodo }) {
                 <DialogHeader>
                     <DialogTitle>Edit Todo</DialogTitle>
                     <DialogDescription>
-                        Edit your todo item here. Click save when you're done.
+                        Edit your todo item here. Click save when you&apos;re done.
                     </DialogDescription>
                 </DialogHeader>
 
