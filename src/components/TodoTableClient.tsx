@@ -3,6 +3,7 @@ import {
     Table,
     TableBody,
     TableCell,
+    TableFooter,
     TableHead,
     TableHeader,
     TableRow,
@@ -44,6 +45,20 @@ export function TodoTableClient({ todos }: { todos: ITodo[] }) {
                         </TableRow>
                     ))}
                 </TableBody>
+                <TableFooter>
+                    <TableRow className="bg-gray-100 dark:bg-gray-800">
+                        <TableCell className="font-bold" colSpan={3}>
+                            <span>
+                                Total
+                            </span>
+                        </TableCell>
+                        <TableCell className="text-right font-bold">
+                            <span>
+                                {!todos.length ? "No todos" : todos.length}
+                            </span>
+                        </TableCell>
+                    </TableRow>
+                </TableFooter>
             </Table>
         </div>
     );

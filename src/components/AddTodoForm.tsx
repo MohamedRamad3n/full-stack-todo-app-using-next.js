@@ -43,7 +43,7 @@ export const TodoFormSchema = z.object({
 
 export type TodoFormValues = z.infer<typeof TodoFormSchema>
 
-export default function TodoForm() {
+export default function TodoForm({ userId }: { userId: string }) {
   const [open, setOpen] = useState(false);
   const form = useForm<TodoFormValues>({
     resolver: zodResolver(TodoFormSchema),
@@ -57,7 +57,7 @@ export default function TodoForm() {
 
   const onSubmit = async (data: TodoFormValues) => {
     try {
-      await createTodosAction({ data });
+      await createTodosAction({ data, userId });
       form.reset();
       setOpen(false);
       toast.success("Todo created successfully!");

@@ -5,20 +5,24 @@ import { revalidatePath } from 'next/cache'
 
 const prisma = new PrismaClient()
 
-export async function getTodosAction() {
+export async function getTodosAction(userId: string) {
     return await prisma.todo.findMany({
+        where: {
+            userId: userId
+        },
         orderBy: {
             createdAt: 'desc'
         }
     })
 }
 
-export async function createTodosAction({ data }: { data: TodoFormValues }) {
+export async function createTodosAction({ data, userId }: { data: TodoFormValues, userId: string }) {
     const todo = await prisma.todo.create({
         data: {
             title: data.title,
             description: data.description,
-            completed: data.completed
+            completed: data.completed,
+            userId: userId
         }
     })
     revalidatePath('/')
