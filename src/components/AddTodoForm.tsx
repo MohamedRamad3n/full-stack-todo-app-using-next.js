@@ -62,6 +62,7 @@ export default function TodoForm({ userId }: { userId: string }) {
       setOpen(false);
       toast.success("Todo created successfully!");
     } catch (error) {
+      console.error(error);
       toast.error("Failed to create todo");
     }
   }

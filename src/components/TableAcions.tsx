@@ -2,7 +2,6 @@
 import { Trash } from 'lucide-react';
 import React, { useState } from 'react'
 import { Button } from './ui/button';
-import { Pencil } from 'lucide-react';
 import { Spinner } from '@/utils/Spinder';
 import { deleteTodosAction } from '../../server/actions/todo-action';
 import EditTodoForm from './EditTodoForm';

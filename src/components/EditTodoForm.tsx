@@ -1,6 +1,6 @@
 'use client';
 import { Button } from "@/components/ui/button";
-import { Pencil, Plus } from "lucide-react";
+import { Pencil } from "lucide-react";
 import {
     Form,
     FormControl,
@@ -57,6 +57,7 @@ export default function EditTodoForm({ todo }: { todo: ITodo }) {
             setOpen(false);
             toast.success("Todo updated successfully!");
         } catch (error) {
+            console.error(error);
             toast.error("Failed to update todo");
         }
     }
