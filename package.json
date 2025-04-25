@@ -9,9 +9,6 @@
     "lint": "next lint",
     "format": "prettier --write ."
   },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-  },
   "dependencies": {
     "@clerk/nextjs": "^6.18.0",
     "@hookform/resolvers": "^5.0.1",
